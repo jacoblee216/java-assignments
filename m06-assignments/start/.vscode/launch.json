@@ -1,0 +1,26 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "java",
+			"name": "StaffDatabaseApp",
+			"request": "launch",
+			"mainClass": "StaffDatabaseApp",
+			"projectName": "start_56ca746d"
+		},
+		{
+			"vmArgs": "--module-path \"c:/Users/jacob/Desktop/java-assignments/m05-assignments/javafx-sdk-23.0.2/lib\" --add-modules javafx.controls,javafx.fxml",
+			"type": "java",
+			"name": "Launch Current File",
+			"request": "launch",
+			"mainClass": "${file}"
+		},
+		{
+			"vmArgs": "--module-path \"c:/Users/jacob/Desktop/java-assignments/m05-assignments/javafx-sdk-23.0.2/lib\" --add-modules javafx.controls,javafx.fxml",
+			"type": "java",
+			"name": "Launch App",
+			"request": "launch",
+			"mainClass": "App"
+		}
+	]
+}

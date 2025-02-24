@@ -6,6 +6,13 @@
 			"name": "img",
 			"request": "launch",
 			"mainClass": "img",
+			"projectName": "img_9150cb27"
+		},
+		{
+			"type": "java",
+			"name": "img",
+			"request": "launch",
+			"mainClass": "img",
 			"projectName": "img_f7cb1625"
 		},
 		{
