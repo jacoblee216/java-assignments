@@ -1,10 +1,10 @@
 package items;
-public class liquidClean extends cleanSupplies {
-    private boolean toxic;
 
-    public liquidClean(String name, boolean toxic) {
+public class nonLiquidClean extends cleanSupplies {
+    public nonLiquidClean(String name, boolean electric) {
         this.name = name;
-        this.toxic = toxic;
+        this.electric = electric;
+
     }
     @Override
     public String getName() {
@@ -12,10 +12,11 @@ public class liquidClean extends cleanSupplies {
     }
     @Override
     public String toString() {
-        if (toxic) {
-            return name + " | " + "TOXIC" ;
+        if (electric) {
+            return name + " | " + "ELECTRIC";
         } else {
             return name;
         }
     }
+    
 }

@@ -11,10 +11,10 @@ public class Kitchenware {
     void setName(String name) {
         this.name = name;
     }
-    String getName() {
+    public String getName() {
         return name;
     }
     public String toString() {
-        return "Kitchenware Name: " + name;
+        return name;
     }
 }
