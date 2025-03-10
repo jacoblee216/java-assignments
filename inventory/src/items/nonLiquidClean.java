@@ -6,6 +6,9 @@ public class nonLiquidClean extends cleanSupplies {
         this.electric = electric;
 
     }
+    public boolean isElectric() {
+        return electric;
+    }
     @Override
     public String getName() {
         return name;
@@ -13,7 +16,7 @@ public class nonLiquidClean extends cleanSupplies {
     @Override
     public String toString() {
         if (electric) {
-            return name + " | " + "ELECTRIC";
+            return name + " | " + "ELECTRIC"; // add electric to the name if electric is true
         } else {
             return name;
         }

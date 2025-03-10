@@ -22,7 +22,7 @@ public class App extends Application {
         ListView<VBox> foodView = new ListView<>();
         ListView<VBox> cleanView = new ListView<>();
         ListView<VBox> kitchenView = new ListView<>();
-        ListView<VBox> liquidView = new ListView<>();
+        ListView<VBox> liquidView = new ListView<>(); // listviews 
         HBox selectButtons = new HBox(10);
         selectButtons.setStyle("-fx-alignment: center;");
 
@@ -30,7 +30,7 @@ public class App extends Application {
 
         RadioButton foodButton = new RadioButton("Food");
         RadioButton cleanSuppliesButton = new RadioButton("Cleaning Supplies");
-        RadioButton kitchenwareButton = new RadioButton("Kitchenware");
+        RadioButton kitchenwareButton = new RadioButton("Kitchenware"); // create radio buttons for user to select
         RadioButton liquidCleanButton = new RadioButton("Liquid Cleaning Supplies");
 
         ToggleGroup group = new ToggleGroup(); // radio selectButtons for user to select but they are mutually exclusive
@@ -48,12 +48,15 @@ public class App extends Application {
         ObservableList<String> kitchenwareItems = FXCollections.observableArrayList("Plates", "Bowls", "Cups", "Silverware", "Pots", "Pans", "Cutting Board", "Knife", "Spatula"); // create a list of kitchenware
         ObservableList<String> liquidCleanItems = FXCollections.observableArrayList("Bleach", "Windex", "Dish Soap", "Laundry Detergent", "Fabric Softener", "Vinegar", "Baking Soda", "Hydrogen Peroxide"); // create a list of liquid cleaning supplies
         
+        
+        // create a list view for each item type
+    
         ListView<VBox> itemType = new ListView<>();
         itemType.setPadding(new Insets(10));
 
         ArrayList<Food> foodList = new ArrayList<>();
         ArrayList<nonLiquidClean> cleanList = new ArrayList<>();
-        ArrayList<Kitchenware> kitchenList = new ArrayList<>();
+        ArrayList<Kitchenware> kitchenList = new ArrayList<>(); // array lists for each object type
         ArrayList<liquidClean> liquidList = new ArrayList<>();
 
 
@@ -62,8 +65,8 @@ public class App extends Application {
             RadioButton selectedRadioButton = (RadioButton) group.getSelectedToggle(); // takes string from radio button and saves it to the list view
             String type = selectedRadioButton.getText(); 
             if (type.equals("Food")) {
-                ObservableList<VBox> foodHBoxes = FXCollections.observableArrayList();
-                for (String foodItem : foodItems) {
+                ObservableList<VBox> foodHBoxes = FXCollections.observableArrayList(); 
+                for (String foodItem : foodItems) {         // for each item in the list, create a label, text field, and button
                     Label foodLabel = new Label(foodItem);
                     TextField numItems = new TextField();
                     numItems.setPromptText("Number of Items");
@@ -73,7 +76,7 @@ public class App extends Application {
                     expandableBox.setManaged(false);
                     Button toggleButton = new Button("↓");
                     toggleButton.setMinSize(Control.USE_PREF_SIZE, Control.USE_PREF_SIZE);
-                    toggleButton.setOnAction(event -> {
+                    toggleButton.setOnAction(event -> { // toggle button to reveal text field and add button
                         boolean isExpanded = expandableBox.isVisible();
                         expandableBox.setVisible(!isExpanded);
                         expandableBox.setManaged(!isExpanded);
@@ -83,11 +86,11 @@ public class App extends Application {
                     HBox.setHgrow(spacer, Priority.ALWAYS);
                     HBox hBox = new HBox(foodLabel, spacer, toggleButton);
                     VBox vBox = new VBox(hBox, expandableBox);
-                    VBox.setMargin(vBox, new Insets(10, 0, 10, 0)); // Set top and bottom padding to 10, left and right padding to 0
+                    VBox.setMargin(vBox, new Insets(10, 0, 10, 0)); 
                     foodHBoxes.add(vBox);
                 }
                 itemType.setItems(foodHBoxes);
-            } else if (type.equals("Cleaning Supplies")) {
+            } else if (type.equals("Cleaning Supplies")) {  // same as above but for cleaning supplies
                 ObservableList<VBox> cleanSuppliesHBoxes = FXCollections.observableArrayList();
                 for (String cleanItems : cleanSuppliesItems) {
                     Label cleanLabel = new Label(cleanItems);
@@ -109,11 +112,11 @@ public class App extends Application {
                     HBox.setHgrow(spacer, Priority.ALWAYS);
                     HBox hBox = new HBox(cleanLabel, spacer, toggleButton);
                     VBox vBox = new VBox(hBox, expandableBox);
-                    VBox.setMargin(vBox, new Insets(10, 0, 10, 0)); // Set top and bottom padding to 10, left and right padding to 0
+                    VBox.setMargin(vBox, new Insets(10, 0, 10, 0)); 
                     cleanSuppliesHBoxes.add(vBox);
                 }
                 itemType.setItems(cleanSuppliesHBoxes);
-            } else if (type.equals("Kitchenware")) {
+            } else if (type.equals("Kitchenware")) { // same as above but for kitchenware
                 ObservableList<VBox> kitchenwareHBoxes = FXCollections.observableArrayList();
                 for (String kitchenItems : kitchenwareItems) {
                     Label kitchenLabel = new Label(kitchenItems);
@@ -135,11 +138,11 @@ public class App extends Application {
                     HBox.setHgrow(spacer, Priority.ALWAYS);
                     HBox hBox = new HBox(kitchenLabel, spacer, toggleButton);
                     VBox vBox = new VBox(hBox, expandableBox);
-                    VBox.setMargin(vBox, new Insets(10, 0, 10, 0)); // Set top and bottom padding to 10, left and right padding to 0
+                    VBox.setMargin(vBox, new Insets(10, 0, 10, 0));
                     kitchenwareHBoxes.add(vBox);
                 }
                 itemType.setItems(kitchenwareHBoxes);
-            } else if (type.equals("Liquid Cleaning Supplies")) {
+            } else if (type.equals("Liquid Cleaning Supplies")) { // same as above but for liquid cleaning supplies
                 ObservableList<VBox> liquidCleanHBoxes = FXCollections.observableArrayList();
                 for (String liquidItems : liquidCleanItems) {
                     Label liquidLabel = new Label(liquidItems);
@@ -161,7 +164,7 @@ public class App extends Application {
                     HBox.setHgrow(spacer, Priority.ALWAYS);
                     HBox hBox = new HBox(liquidLabel, spacer, toggleButton);
                     VBox vBox = new VBox(hBox, expandableBox);
-                    VBox.setMargin(vBox, new Insets(10, 0, 10, 0)); // Set top and bottom padding to 10, left and right padding to 0
+                    VBox.setMargin(vBox, new Insets(10, 0, 10, 0)); 
                     liquidCleanHBoxes.add(vBox);
                 }
                 itemType.setItems(liquidCleanHBoxes);
@@ -170,21 +173,29 @@ public class App extends Application {
         addButton.setOnAction(e -> { // event listener for add item button
             RadioButton selectedRadioButton = (RadioButton) group.getSelectedToggle(); // takes string from radio button and saves it to the list view
             String type = selectedRadioButton.getText();
-            for (VBox vBox : itemType.getItems()) {
+            for (VBox vBox : itemType.getItems()) { // iterate over all vbox in list view to check which have textfields with values and add them to the array list
                 switch (type) {
                     case "Food":
                         HBox hBox = (HBox) vBox.getChildren().get(0);
                         Label label = (Label) hBox.getChildren().get(0);
                         TextField textField = (TextField) ((VBox) vBox.getChildren().get(1)).getChildren().get(0);
-                        addIntegerValidation(textField); // Add input validation
+                        addIntegerValidation(textField); // add input validation
                         if (!textField.getText().trim().isEmpty()) {
                             String item = label.getText();
                             int numItems = Integer.parseInt(textField.getText());
                             for (int i = 0; i < numItems; i++) {
-                                foodList.add(new Food(item));
+                                if (item.equals("Beef") || item.equals("Chicken") || item.equals("Pork")) {
+                                    foodList.add(new Food(item,true, false));
+                                }
+                                else if (item.equals("Cheese")) {
+                                    foodList.add(new Food(item, false, true));
+                                }
+                                else {
+                                    foodList.add(new Food(item, false, false));
+                                }
                             }
                             if (checkFoodItem(foodView, item)) {
-                                int currentNumItems = 0;
+                                int currentNumItems = 0;  // checks if item is already in array list that way it doesnt create another vBox but rather update the current vBox in the list view
                                 for (int i = 0; i < foodList.size(); ++i) {
                                     if (foodList.get(i).getFoodName().equals(item)) {
                                         currentNumItems++;
@@ -192,7 +203,7 @@ public class App extends Application {
                                 }
                                 updateTextFieldValue(foodView, item, numItems, currentNumItems - numItems);
                             } else {
-                                TextField deleteTextField = new TextField();
+                                TextField deleteTextField = new TextField(); // if item is not in array list, create a new vBox with a delete button and delete textfield
                                 deleteTextField.setPromptText("Number of Items");
                                 addIntegerValidation(deleteTextField); // Add input validation
                                 Button deleteButton = new Button("Delete");
@@ -208,15 +219,16 @@ public class App extends Application {
                                     toggleButton.setText(isExpanded ? "↓" : "↑");
                                 });
                                 Region spacer = new Region();
-                                HBox.setHgrow(spacer, Priority.ALWAYS);
+                                HBox.setHgrow(spacer, Priority.ALWAYS); 
                                 Label foodLabel = new Label(item);
                                 Label numFood = new Label(String.valueOf(numItems));
                                 HBox listBox = new HBox(10, foodLabel, numFood, spacer, toggleButton);
+                                listBox.setStyle("-fx-padding: 5;");
                                 VBox deleteBox = new VBox(listBox, foodExpandableBox);
                                 VBox.setMargin(deleteBox, new Insets(20, 0, 20, 0));
                                 foodView.getItems().add(deleteBox);
 
-                                // Set user data for the delete button
+                                // set user data for the delete button
                                 deleteButton.setUserData(deleteBox);
                                 deleteButton.setOnAction(deleteEvent -> {
                                     TextField expandableTextField = (TextField) foodExpandableBox.getChildren().get(0);
@@ -224,23 +236,23 @@ public class App extends Application {
                                     int temp = 0;
                                     int currentNumItems1 = 0;
                                     for (int i = 0; i < foodList.size(); i++) {
-                                        if (foodList.get(i).getFoodName().equals(item)) {
+                                        if (foodList.get(i).getFoodName().equals(item)) { // checks if there are any items in array list that match the user given input
                                             currentNumItems1++;
                                         }
                                     }
                                     for (int i = 0; i < foodList.size(); i++) {
-                                        if (temp < deleteNumItems && foodList.get(i).getFoodName().equals(item)) {
+                                        if (temp < deleteNumItems && foodList.get(i).getFoodName().equals(item)) { // removes number of items from array list
                                             foodList.remove(i);
                                             temp++;
                                         }
                                     }
                                     deleteNumItems = 0 - deleteNumItems;
-                                    deleteTextFieldValue(foodView, item, currentNumItems1, deleteNumItems);
+                                    deleteTextFieldValue(foodView, item, currentNumItems1, deleteNumItems); // updates value for the number of items
                                 });
                             }
                         }
                         break;
-                    case "Cleaning Supplies":
+                    case "Cleaning Supplies": // same as above but for cleaning supplies
                         HBox hBox1 = (HBox) vBox.getChildren().get(0);
                         Label label1 = (Label) hBox1.getChildren().get(0);
                         TextField textField1 = (TextField) ((VBox) vBox.getChildren().get(1)).getChildren().get(0);
@@ -321,7 +333,7 @@ public class App extends Application {
                             }
                         }
                         break;
-                    case "Kitchenware":
+                    case "Kitchenware": // same as above but for kitchenware
                         HBox hBox2 = (HBox) vBox.getChildren().get(0);
                         Label label2 = (Label) hBox2.getChildren().get(0);
                         TextField textField2 = (TextField) ((VBox) vBox.getChildren().get(1)).getChildren().get(0);
@@ -329,8 +341,15 @@ public class App extends Application {
                         if (!textField2.getText().trim().isEmpty()) {
                             String item2 = label2.getText();
                             int numItems2 = Integer.parseInt(textField2.getText());
+                            boolean sharp = false;
                             for (int i = 0; i < numItems2; i++) {
-                                kitchenList.add(new Kitchenware(item2));
+                                if (item2.equals("Knife")) {
+                                    kitchenList.add(new Kitchenware(item2,true));
+                                    sharp = true;
+                                }
+                                else {
+                                    kitchenList.add(new Kitchenware(item2, false));
+                                }
                             }
                             if (checkKitchenItem(kitchenView, item2)) {
                                 int currentNumItems2 = 0;
@@ -360,7 +379,11 @@ public class App extends Application {
                                 HBox.setHgrow(spacer, Priority.ALWAYS);
                                 Label kitchenLabel = new Label(item2);
                                 Label numKitchen = new Label(String.valueOf(numItems2));
-                                HBox listBox = new HBox(10, kitchenLabel, numKitchen, spacer, toggleButton);
+                                Label sharpLabel = new Label();
+                                if (sharp) {
+                                    sharpLabel.setText("SHARP");
+                                }
+                                HBox listBox = new HBox(10, kitchenLabel, numKitchen, sharpLabel, spacer, toggleButton);
                                 listBox.setStyle("-fx-padding: 5;");
                                 VBox deleteBox = new VBox(listBox, kitchenExpandableBox);
                                 VBox.setMargin(deleteBox, new Insets(20, 0, 20, 0));
@@ -390,7 +413,7 @@ public class App extends Application {
                             }
                         }
                         break;
-                    case "Liquid Cleaning Supplies":
+                    case "Liquid Cleaning Supplies": // same as above but for liquid cleaning supplies
                         HBox hBox3 = (HBox) vBox.getChildren().get(0);
                         Label label3 = (Label) hBox3.getChildren().get(0);
                         TextField textField3 = (TextField) ((VBox) vBox.getChildren().get(1)).getChildren().get(0);
@@ -401,9 +424,13 @@ public class App extends Application {
                             boolean toxic = false;
                             for (int i = 0; i < numItems3; i++) {
                                 if (item3.equals("Vinegar") || item3.equals("Baking Soda") || item3.equals("Hydrogen Peroxide")) {
-                                    liquidList.add(new liquidClean(item3, false));
-                                } else {
-                                    liquidList.add(new liquidClean(item3, true));
+                                    liquidList.add(new liquidClean(item3, false, false));
+                                }
+                                else if (item3.equals("Fabric Softener") || item3.equals("Laundry Detergent")) {
+                                    liquidList.add(new liquidClean(item3, true, true));
+                                }
+                                 else {
+                                    liquidList.add(new liquidClean(item3, true, false));
                                     toxic = true;
                                 }
                             }
@@ -473,7 +500,7 @@ public class App extends Application {
             }
         });
         GridPane buttonGrid = new GridPane();
-        buttonGrid.setPadding(new Insets(50));
+        buttonGrid.setPadding(new Insets(10));
         buttonGrid.setHgap(15);
         buttonGrid.setVgap(15);
         buttonGrid.add(foodButton, 0, 0);
@@ -490,7 +517,7 @@ public class App extends Application {
         Label foodLabelNode = new Label("Food");
         Label cleanLabelNode = new Label("Cleaning Equipment");
         Label kitchenLabelNode = new Label("Kitchenware");
-        Label liquidLabelNode = new Label("Cleaning Supplies");
+        Label liquidLabelNode = new Label("Cleaning Supplies"); // create grid pane for list labels and the list views 
         lists.add(foodLabelNode, 0, 0);
         lists.add(cleanLabelNode, 1, 0);
         lists.add(kitchenLabelNode, 2, 0);
@@ -501,7 +528,7 @@ public class App extends Application {
         lists.setHalignment(liquidLabelNode, HPos.CENTER);
         GridPane.setHgrow(foodView, Priority.ALWAYS);
         GridPane.setHgrow(cleanView, Priority.ALWAYS);
-        GridPane.setHgrow(kitchenView, Priority.ALWAYS);
+        GridPane.setHgrow(kitchenView, Priority.ALWAYS); // make sure they adapt to the application size
         GridPane.setHgrow(liquidView, Priority.ALWAYS);
         lists.add(foodView, 0, 1);
         lists.add(cleanView, 1, 1);
@@ -521,7 +548,7 @@ public class App extends Application {
         stage.setTitle("Inventory Management System");
         stage.show();
     }
-    private boolean checkFoodItem(ListView<VBox> foodView, String item) {
+    private boolean checkFoodItem(ListView<VBox> foodView, String item) { // method to check if items are already in the list view
         for (VBox vBox : foodView.getItems()) {
             HBox hBox = (HBox) vBox.getChildren().get(0);
             Label label = (Label) hBox.getChildren().get(0);
@@ -531,7 +558,7 @@ public class App extends Application {
         }
         return false;
     }
-    private boolean checkCleanItem(ListView<VBox> cleanView, String item) {
+    private boolean checkCleanItem(ListView<VBox> cleanView, String item) { // same as above but for cleaning supplies
         for (VBox vBox : cleanView.getItems()) {
             HBox hBox = (HBox) vBox.getChildren().get(0);
             Label label = (Label) hBox.getChildren().get(0);
@@ -541,7 +568,7 @@ public class App extends Application {
         }
         return false;
     }
-    private boolean checkKitchenItem(ListView<VBox> kitchenView, String item) {
+    private boolean checkKitchenItem(ListView<VBox> kitchenView, String item) { // same as above but for kitchenware
         for (VBox vBox : kitchenView.getItems()) {
             HBox hBox = (HBox) vBox.getChildren().get(0);
             Label label = (Label) hBox.getChildren().get(0);
@@ -551,7 +578,7 @@ public class App extends Application {
         }
         return false;
     }
-    private boolean checkLiquidItem(ListView<VBox> liquidView, String item) {
+    private boolean checkLiquidItem(ListView<VBox> liquidView, String item) { // same as above but for liquid cleaning supplies
         for (VBox vBox : liquidView.getItems()) {
             HBox hBox = (HBox) vBox.getChildren().get(0);
             Label label = (Label) hBox.getChildren().get(0);
@@ -562,50 +589,49 @@ public class App extends Application {
         return false;
     }
  
-    private void updateTextFieldValue(ListView<VBox> listView, String item, int numItems, int currentNumItems) {
+    private void updateTextFieldValue(ListView<VBox> listView, String item, int numItems, int currentNumItems) { // method to update the number of items in the list view
         for (VBox vBox : listView.getItems()) {
             if (!vBox.getChildren().isEmpty()) {
-                HBox hBox = (HBox) vBox.getChildren().get(0); // Get the first child (HBox)
-    
+                HBox hBox = (HBox) vBox.getChildren().get(0); 
                 if (!hBox.getChildren().isEmpty()) {
-                    Label label = (Label) hBox.getChildren().get(0); // Get the first Label in HBox
-                    Label numLabel = (Label) hBox.getChildren().get(1); // Get the second Label in HBox
+                    Label label = (Label) hBox.getChildren().get(0); 
+                    Label numLabel = (Label) hBox.getChildren().get(1); // getchildren to get the correct label
     
-                    if (label.getText().equals(item)) { // Check if it's the correct Label
-                        String strNum = String.valueOf(numItems + currentNumItems); // Convert the number to a String
-                        numLabel.setText(strNum); // Update the label text
-                        break; // Stop after finding and updating the correct label
+                    if (label.getText().equals(item)) { 
+                        String strNum = String.valueOf(numItems + currentNumItems); // convert the number to a string
+                        numLabel.setText(strNum); // update the value
+                        break; 
                     }
                 }
             }
         }
     }
-    private void deleteTextFieldValue(ListView<VBox> listView, String item, int currentNum, int deleteNum) {
+    private void deleteTextFieldValue(ListView<VBox> listView, String item, int currentNum, int deleteNum) { // same thing but just updating it to delete a number of items 
         for (VBox vBox : listView.getItems()) {
             if (!vBox.getChildren().isEmpty()) {
-                HBox hBox = (HBox) vBox.getChildren().get(0); // Get the first child (HBox)
+                HBox hBox = (HBox) vBox.getChildren().get(0); 
     
                 if (!hBox.getChildren().isEmpty()) {
-                    Label label = (Label) hBox.getChildren().get(0); // Get the first Label in HBox
-                    Label numLabel = (Label) hBox.getChildren().get(1); // Get the second Label in HBox
+                    Label label = (Label) hBox.getChildren().get(0); 
+                    Label numLabel = (Label) hBox.getChildren().get(1); 
     
-                    if (label.getText().equals(item)) { // Check if it's the correct Label
+                    if (label.getText().equals(item)) { 
                         int newNum = currentNum + deleteNum;
                         if (newNum <= 0) {
                             listView.getItems().remove(vBox);
                             break;
                         }
                         else {
-                            String strNum = String.valueOf(newNum); // Convert the number to a String
-                            numLabel.setText(strNum); // Update the label text
-                            break; // Stop after finding and updating the correct label
+                            String strNum = String.valueOf(newNum); 
+                            numLabel.setText(strNum); 
+                            break; 
                         }
                     }
                 }
             }
         }
     }
-    private void addIntegerValidation(TextField textField) {
+    private void addIntegerValidation(TextField textField) { // input validation
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 textField.setText(newValue.replaceAll("[^\\d]", ""));
